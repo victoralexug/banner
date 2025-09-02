@@ -1,0 +1,256 @@
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <style>
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      font-family: Sans-Serif;
+    }
+    
+    .about-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+      flex-wrap: wrap; 
+      box-sizing: border-box;
+    }
+
+    /* Image Collage */
+    .image-collage {
+      position: relative;
+      width: 340px;
+      height: 420px;
+    }
+
+    .image-collage img {
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      width: 400px;
+      object-fit: cover;
+      position: absolute;
+      transition: transform 0.3s ease;
+    }
+
+    .image-collage img:hover {
+      transform: scale(1.05);
+    }
+
+    .image-collage .img1 { top: 0; left: 0; z-index: 1; }
+    .image-collage .img2 { top: 100px; left: 220px; z-index: 2; }
+    .image-collage .img3 { top: 200px; left: 40px; z-index: 3; }
+
+    /* Text Column */
+    .about-section .about-content {
+      flex: 1;
+      max-width: 480px;
+    }
+    
+    .about-section .about-content h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #111;
+      font-family: poppins, sans-serif;
+    }
+    
+    .about-section .about-content p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+      color: #444;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 1300px) {
+      .image-collage img {
+        width: 280px;
+        margin-top: 20px;
+      }
+
+      .image-collage .img2 { top: 80px; left: 180px; z-index: 2; }
+      .image-collage .img3 { top: 170px; left: 40px; z-index: 3; }
+
+      .about-section .about-content h1 {
+        font-size: 1.6rem;
+      }
+      .about-section .about-content p {
+        font-size: 0.9rem;
+      }
+    }
+ 
+    @media (max-width: 768px) {
+      .image-collage img {
+        width: 220px;
+        margin-top: 20px;
+      }
+
+      .image-collage .img2 { top: 60px; left: 140px; z-index: 2; }
+      .image-collage .img3 { top: 120px; left: 40px; z-index: 3; }
+
+      .about-section .about-content h1 {
+        font-size: 1.6rem;
+      }
+      .about-section .about-content p {
+        font-size: 0.9rem;
+      }
+      .about-section .dark-glow-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 568px) {
+      .about-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .image-collage {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        height: auto;
+        width: 100%;
+      }
+
+      .image-collage img {
+        position: static;
+        max-width: 30%;
+        height: auto;
+      }
+    }
+
+    /* Dark Glow Button */
+    .dark-glow-btn {
+      position: relative;
+      display: inline-block;
+      padding: 9px 20px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 1.5px;
+
+      /* Darker background */
+      background: rgba(15, 15, 35, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+
+      /* Shadows */
+      box-shadow:
+        inset 1px 1px 4px rgba(255, 255, 255, 0.2),
+        inset -2px -2px 6px rgba(0, 0, 0, 0.6),
+        0 8px 20px rgba(0, 0, 0, 0.4);
+
+      overflow: hidden;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .dark-glow-btn span {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Animated gradient border */
+    .dark-glow-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 30px;
+      padding: 2px;
+      background: linear-gradient(270deg, #ff0077, #ffcc00, #00e0ff, #ff0077);
+      background-size: 300% 300%;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      z-index: 1;
+      animation: glowingBorder 6s linear infinite;
+      opacity: 0.95;
+    }
+
+    /* Glossy shine overlay */
+    .dark-glow-btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      border-radius: 30px 30px 0 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.35), transparent);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Glow animation */
+    @keyframes glowingBorder {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Hover effect */
+    .dark-glow-btn:hover {
+      transform: translateY(-2px) scale(0.96);
+      background: rgba(15, 15, 35, 0.95);
+    }
+
+    @media (max-width: 768px) {
+      .dark-glow-btn {
+        padding: 5px 16px;
+        font-size: 11px;
+        margin-left: -20px;
+      }
+    }
+
+    @media (max-width: 568px) {
+      .dark-glow-btn {
+        display: inline-block;
+      }
+      .btn-wrapper {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="about-section">
+    <!-- Left: Image -->
+    <div class="about-image" data-aos="fade-right" data-aos-duration="1000">
+      <div class="image-collage">
+        <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg" alt="Mentorship Session" class="img1" />
+        <img src="https://images.pexels.com/photos/1181715/pexels-photo-1181715.jpeg" alt="Team Coaching" class="img2" />
+        <img src="https://images.pexels.com/photos/2422294/pexels-photo-2422294.jpeg" alt="Personal Guidance" class="img3" />
+      </div>
+    </div>
+
+    <!-- Right: Content -->
+    <div class="about-content" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+      <p class="about-title"><strong>Coaching and Mentoring</strong></p>
+      <h1>Expert Guidance for Personal Growth</h1>
+      <p>As a life coach, I provide personalized support to help freshers overcome challenges, set meaningful goals, and create a fulfilling life. Through expert guidance, motivation, and proven strategies, you can develop a growth mindset, boost confidence, and unlock your full potential.</p>
+      <p>Whether it’s career success, self-improvement, or emotional well-being, I'm here to help you take control and achieve lasting transformation.</p>
+      <div class="btn-wrapper">
+        <a href="https://www.coachli.co/ae" target="_blank" class="dark-glow-btn"><span>Book a 1:1</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      offset: 100
+    });
+  </script>
+</body>

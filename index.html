@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Web Dev Banner</title>
+
+  <link href="https://media.licdn.com/dms/image/v2/D4D03AQHLthJAwW2mOQ/profile-displayphoto-shrink_200_200/B4DZjsgw71IEAY-/0/1756314669860?e=2147483647&v=beta&t=1FGdYR7jLByw2K-N4KBM0uBeKqOA2M0yTLboOqlqlx0" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1:#0f172a;     /* navy background */
+      --bg2:#1e293b;     /* dark slate */
+      --accent:#00d4ff;  /* cyan-blue */
+      --muted:#94a3b8;   /* soft gray */
+    }
+
+    body{
+      margin:0;
+      background:var(--bg1);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+
+    .banner{
+      width:min(1200px, 95vw);
+      aspect-ratio: 4 / 1;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:2rem;
+      color:white;
+      box-shadow:0 10px 25px rgba(0,0,0,.4);
+    }
+
+    .left{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      gap:.01rem;
+    }
+
+    .name{
+      font:600 clamp(20px, 1.4vw, 18px)/.2 "Montserrat", sans-serif;
+      color:var(--accent);
+      text-transform:uppercase;
+    }
+
+    .roles{
+      font:700 clamp(22px, 2.5vw, 38px)/1.4 "Poppins", sans-serif;
+      color:white;
+    }
+
+    .tagline{
+      font:400 clamp(16px, 1.2vw, 16px)/1.5 "Poppins", sans-serif;
+      color:var(--muted);
+      max-width:75ch;
+    }
+
+    .avatar-wrap{
+      flex-shrink:0;
+      width:240px;
+      aspect-ratio:1/1;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:conic-gradient(from 180deg, #00d4ff, #00ff9d, #00d4ff);
+      padding:8px;
+    }
+
+    .avatar{
+      width:102.5%;
+      height:100%;
+      border-radius:50%;
+      background:#111 center/cover repeat url("../amarachukwueze/victor\ pro.jpeg");
+      border:3px solid rgba(255,255,255,.1);
+    }
+
+    @media (max-width:768px){
+      .banner{ flex-direction:column; text-align:center; padding:1.5rem; aspect-ratio:auto; }
+      .left{ align-items:center; }
+      .avatar-wrap{ width:180px; margin-top:1rem; }
+    }
+  </style>
+</head>
+<body>
+  <section class="banner">
+    <div class="left">
+      <h1 class="name">VICTOR EZE</h1>
+      <p class="roles">Web Developer | Frontend Engineer | Founder – VezeWeb</p>
+      <p class="tagline">
+        I design and develop responsive, modern websites that don’t just look good -
+        they bring clients, boost conversions, and help businesses grow online.
+      </p>
+    </div>
+
+    <div class="avatar-wrap">
+      <div class="avatar"></div>
+    </div>
+  </section>
+</body>
+</html>
